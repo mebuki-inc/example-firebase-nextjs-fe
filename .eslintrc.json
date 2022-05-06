@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": ["state"]
+    }],
+    "no-image-element": "off",
+    "@next/next/no-img-element": "off"
+  },
+  "ignorePatterns": ["**/__tests__/*.ts", "**/__mocks__/*.ts", "next-env.d.ts"],
+  "settings": {
+    "react": {
+      "version": "detact"
+    }
+  }
+}
