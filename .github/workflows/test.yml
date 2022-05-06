@@ -1,0 +1,46 @@
+name: jest
+on:
+  pull_request:
+    types: [opened, synchronize]
+# slack通知をする場合
+# env:
+#  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+jobs:
+  jest:
+    name: jest
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup NodeJs
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: yarn install
+        run: yarn
+      - name: Run test
+        run: yarn run test:c
+      - name: Upload test coverage artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: coverage
+          path: coverage
+        env:
+          CI: true
+      - name: display coverage
+        uses: vebr/jest-lcov-reporter@v0.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          lcov-file: ./coverage/lcov.info
+# slack通知をする場合
+#      # テスト失敗時はこちらのステップが実行される
+#      - name: Slack Notification on Failure
+#        uses: rtCamp/action-slack-notify@v2.0.2
+#        if: failure()
+#        env:
+#          SLACK_CHANNEL: front-end-git-notice
+#          SLACK_TITLE: TEST Failure
+#          SLACK_MESSAGE: 'TEST が失敗しましたので確認してください:eyes:'
+#          SLACK_COLOR: danger

@@ -1,0 +1,42 @@
+name: lint
+on:
+  pull_request:
+    types: [opened, synchronize]
+# slack通知する場合
+# env:
+#  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+jobs:
+  eslint:
+    name: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup NodeJs
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: yarn install
+        run: yarn
+      - name: eslint review
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          eslint_flags: './**/*.{ts,tsx}'
+      - name: eslint
+        run: yarn eslint
+      - name: Typecheck
+        uses: andoshin11/typescript-error-reporter-action@v1.0.2
+# slack通知する場合
+#      # テスト失敗時はこちらのステップが実行される
+#      - name: Slack Notification on Failure
+#        uses: rtCamp/action-slack-notify@v2.0.2
+#        if: failure()
+#        env:
+#          SLACK_CHANNEL: front-end-git-notice
+#          SLACK_TITLE: Lint Failure
+#          SLACK_MESSAGE: 'Lint エラーが出ているので確認してください:eyes:'
+#          SLACK_COLOR: danger
