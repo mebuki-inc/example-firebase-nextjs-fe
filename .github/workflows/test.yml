@@ -21,7 +21,7 @@ jobs:
       - name: yarn install
         run: yarn
       - name: Run test
-        run: yarn run test:coverage
+        run: yarn run test:c
       - name: Upload test coverage artifact
         uses: actions/upload-artifact@v1
         with:
