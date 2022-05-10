@@ -34,5 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+# firebase cache
+.firebase/
+firebase-debug.log
+
 # jetbrains ide
 /.idea/
