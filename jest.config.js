@@ -8,6 +8,12 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
   testMatch: ['**/__tests__/**/*.+(ts|tsx)', '**/(*.)+(spec|test).+(ts|tsx)'],
+  moduleNameMapper: {
+    '\\.(css|scss)$': 'identity-obj-proxy'
+  },
+  transform: {
+    '^.+\\.(js|ts|jsx|tsx)$': 'babel-jest'
+  },
   collectCoverageFrom: [
     'src/**/*.ts',
     'src/**/*.tsx',

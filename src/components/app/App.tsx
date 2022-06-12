@@ -1,6 +1,8 @@
 import type { FC } from 'react'
 import type { AppProps } from 'next/app'
 
+import '../styles/global.scss'
+
 /**
  * ToDo: アプリケーションの共通処理を追記する
  */
