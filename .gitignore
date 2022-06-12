@@ -40,3 +40,6 @@ firebase-debug.log
 
 # jetbrains ide
 /.idea/
+
+# config
+/config
