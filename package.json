@@ -15,6 +15,9 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -o docs-build"
   },
+  "resolutions": {
+    "react-test-renderer": "^18.1.0"
+  },
   "dependencies": {
     "firebase": "^9.8.1",
     "next": "12.1.6",
