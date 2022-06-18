@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots pages/Home Default 1`] = `
+Array [
+  <h1
+    className="title"
+  >
+    Home画面
+  </h1>,
+  <section>
+    <h2>
+      メニュー
+    </h2>
+    <ul>
+      <li>
+        <a
+          href="/login"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          ログイン画面（/login）
+        </a>
+      </li>
+    </ul>
+  </section>,
+]
+`;
