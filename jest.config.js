@@ -11,11 +11,10 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.ts',
     'src/**/*.tsx',
-    '!src/**/__tests__/*.ts',
-    '!src/**/__stories__/*.ts(x)',
+    '!src/**/__tests__/*.ts(x)',
+    '!src/**/*.stories.ts(x)',
     '!src/types/**.d.ts',
-    '!src/pages/**/*.ts(x)',
-    '!src/redux/index.ts'
+    '!src/pages/**/*.ts(x)'
   ],
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy'
