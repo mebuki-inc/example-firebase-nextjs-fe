@@ -1,10 +1,12 @@
 import type { FC } from 'react'
 import Link from 'next/link'
 
+import styles from './Home.module.scss'
+
 export const Home: FC = () => {
   return (
     <>
-      <h1>Home画面</h1>
+      <h1 className={styles.title}>Home画面</h1>
       <section>
         <h2>メニュー</h2>
         <ul>
