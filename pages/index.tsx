@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 
-import { useCSR } from '../components/hooks'
-import { Home } from '../components/pages/Home'
+import { useCSR } from '../src/hooks'
+import { Home } from '../src/pages/Home'
 
 const Page: NextPage = () => {
   const execRouting = useCSR()

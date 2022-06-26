@@ -4,17 +4,18 @@ module.exports = {
   roots: ['<rootDir>'],
   // setupFiles: ['<rootDir>/.jest/setupFiles.js'],
   testMatch: [
-    '**/__tests__/**/*.+(ts|tsx)',
+    '**/*.test.+(ts|tsx)',
     '**/(*.)+(spec|test).+(ts|tsx)'
     // '!**/storybook.test.ts'
   ],
   collectCoverageFrom: [
     'src/**/*.ts',
     'src/**/*.tsx',
-    '!src/**/__tests__/*.ts(x)',
+    '!src/**/*.test.ts(x)',
     '!src/**/*.stories.ts(x)',
     '!src/types/**.d.ts',
-    '!src/pages/**/*.ts(x)'
+    '!src/components/App/*.ts(x)',
+    '!src/**/index.ts'
   ],
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy'

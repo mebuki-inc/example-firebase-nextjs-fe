@@ -15,5 +15,5 @@ module.exports = {
   ...config,
   addons: ['@storybook/preset-create-react-app']
   // CSF形式のstoryがひっかからないので一旦前のやり方で
-  // stories: ['../../src/components/**/__stories__/*.stories.tsx']
+  // stories: ['../../src/**/*.stories.tsx']
 }
