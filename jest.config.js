@@ -4,7 +4,6 @@ module.exports = {
   roots: ['<rootDir>'],
   // setupFiles: ['<rootDir>/.jest/setupFiles.js'],
   testMatch: [
-    '**/*.test.+(ts|tsx)',
     '**/(*.)+(spec|test).+(ts|tsx)'
     // '!**/storybook.test.ts'
   ],
