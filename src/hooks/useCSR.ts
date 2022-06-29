@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Router, { useRouter } from 'next/router'
 
-import { ROUTES } from '../../app/routes'
+import { ROUTES } from '../config/routes'
 
 export const useCSR = (): boolean => {
   const [execRouting, setExecRouting] = useState(false)

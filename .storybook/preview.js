@@ -1,5 +1,6 @@
 import { RouterContext } from 'next/dist/shared/lib/router-context' // next 11.1
-import '../src/components/styles/globals.scss'
+
+import '../src/styles/globals.scss'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

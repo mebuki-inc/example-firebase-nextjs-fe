@@ -2,9 +2,9 @@ import type { FC } from 'react'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 
-import '../components/styles/globals.scss'
+import '../src/styles/globals.scss'
 
-const Dynamic = dynamic<AppProps>(() => import('../components/app').then(mod => mod.App), {
+const Dynamic = dynamic<AppProps>(() => import('../src/components/App').then(mod => mod.App), {
   ssr: false
 })
 
