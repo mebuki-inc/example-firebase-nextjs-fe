@@ -17,7 +17,7 @@ export const useCSR = (): boolean => {
     const isCSR = ROUTES.some(path => {
       if (new RegExp(`^${path.pattern}$`).test(asPath)) {
         // パスが定義されたパターンと合致する場合CSRする
-        redirect(asPath)
+        redirect(path.href)
         return true
       }
     })

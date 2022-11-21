@@ -48,7 +48,7 @@ describe('useCSR', () => {
         })
 
         expect(mockedRedirect).toHaveBeenCalledTimes(1)
-        expect(mockedRedirect).toHaveBeenCalledWith(href, path)
+        expect(mockedRedirect).toHaveBeenCalledWith(href)
         expect(result?.current).toBe(false)
       }
     )
