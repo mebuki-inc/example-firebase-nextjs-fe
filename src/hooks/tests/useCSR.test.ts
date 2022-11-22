@@ -1,13 +1,12 @@
 import { renderHook, act, RenderResult } from '@testing-library/react-hooks'
 
 import { useCSR } from '../useCSR'
-import { redirect, usePathname } from 'next/navigation'
 
-jest.mock('next/router')
-jest.mock('next/navigation')
+jest.mock('next/router', () => require('next-router-mock'))
 
-const mockedUsePathName = jest.mocked(usePathname)
-const mockedRedirect = jest.mocked(redirect)
+import mockRouter from 'next-router-mock'
+const mockedUseRouter = jest.spyOn(require('next/router'), 'useRouter')
+const mockedReplace = jest.spyOn(mockRouter, 'replace')
 
 let result: RenderResult<boolean> | undefined
 
@@ -22,13 +21,14 @@ describe('useCSR', () => {
       ${'/'}                  | ${'パスが`/`のとき、Router.replaceを実行せずにtrueを返す'}
       ${'/path/to/not/exist'} | ${'パスがROUTESに存在しないとき、Router.replaceを実行せずにtrueを返す'}
     `('$description', async ({ path }) => {
-      mockedUsePathName.mockReturnValue({ asPath: path } as any)
+      mockedUseRouter.mockReturnValue({ asPath: path } as any)
+      mockedReplace.mockResolvedValue(true)
 
       await act(async () => {
         result = renderHook(() => useCSR()).result
       })
 
-      expect(mockedRedirect).toHaveBeenCalledTimes(0)
+      expect(mockedReplace).toHaveBeenCalledTimes(0)
       expect(result?.current).toBe(true)
     })
   })
@@ -41,14 +41,15 @@ describe('useCSR', () => {
     `(
       '$path が $href のパターンに合致するとき、Router.replaceを実行し、falseを返す',
       async ({ path, href }) => {
-        mockedUsePathName.mockReturnValue(path)
+        mockedUseRouter.mockReturnValue({ asPath: path } as any)
+        mockedReplace.mockResolvedValue(false)
 
         await act(async () => {
           result = renderHook(() => useCSR()).result
         })
 
-        expect(mockedRedirect).toHaveBeenCalledTimes(1)
-        expect(mockedRedirect).toHaveBeenCalledWith(href)
+        expect(mockedReplace).toHaveBeenCalledTimes(1)
+        expect(mockedReplace).toHaveBeenCalledWith(href, path)
         expect(result?.current).toBe(false)
       }
     )

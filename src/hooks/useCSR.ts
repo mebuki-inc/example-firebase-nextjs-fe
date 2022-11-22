@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 
 import { ROUTES } from '../config/routes'
-import { redirect, usePathname } from 'next/navigation'
+import Router, { useRouter } from 'next/router'
 
 export const useCSR = (): boolean => {
   const [execRouting, setExecRouting] = useState(false)
-  const asPath = usePathname()
+  const { asPath } = useRouter()
 
   useEffect(() => {
-    if (!asPath || asPath === '/') {
+    if (asPath === '/') {
       // `/`の場合はCSRしない
       setExecRouting(true)
       return
@@ -17,7 +17,7 @@ export const useCSR = (): boolean => {
     const isCSR = ROUTES.some(path => {
       if (new RegExp(`^${path.pattern}$`).test(asPath)) {
         // パスが定義されたパターンと合致する場合CSRする
-        redirect(path.href)
+        Router.replace(path.href, asPath).then()
         return true
       }
     })
