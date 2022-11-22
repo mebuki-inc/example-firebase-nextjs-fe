@@ -1,5 +1,5 @@
 import initStoryshots, { multiSnapshotWithOptions } from '@storybook/addon-storyshots'
-const path = require('path')
+import path from 'path'
 
 initStoryshots({
   configPath: path.resolve(__dirname, './main.js'),
