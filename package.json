@@ -38,7 +38,6 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
-    "react-test-renderer": "^18.2.0",
     "babel-jest": "^29.3.1",
     "babel-loader": "^8.2.5",
     "babel-plugin-require-context-hook": "^1.0.0",
