@@ -42,7 +42,7 @@ describe('useCSR', () => {
       '$path が $href のパターンに合致するとき、Router.replaceを実行し、falseを返す',
       async ({ path, href }) => {
         mockedUseRouter.mockReturnValue({ asPath: path } as any)
-        mockedReplace.mockResolvedValue(false)
+        mockedReplace.mockResolvedValue(true)
 
         await act(async () => {
           result = renderHook(() => useCSR()).result
