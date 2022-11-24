@@ -17,6 +17,7 @@ Array [
           href="/login"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           ログイン画面（/login）
         </a>

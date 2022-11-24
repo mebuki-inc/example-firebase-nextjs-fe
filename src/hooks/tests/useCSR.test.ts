@@ -1,12 +1,11 @@
-import Router, { useRouter } from 'next/router'
 import { renderHook, act, RenderResult } from '@testing-library/react-hooks'
-
+import mockRouter from 'next-router-mock'
 import { useCSR } from '../useCSR'
 
-jest.mock('next/router')
+jest.mock('next/router', () => require('next-router-mock'))
 
-const mockedUseRouter = jest.mocked(useRouter)
-const mockedRouter = jest.mocked(Router)
+const mockedUseRouter = jest.spyOn(require('next/router'), 'useRouter')
+const mockedReplace = jest.spyOn(mockRouter, 'replace')
 
 let result: RenderResult<boolean> | undefined
 
@@ -22,13 +21,13 @@ describe('useCSR', () => {
       ${'/path/to/not/exist'} | ${'パスがROUTESに存在しないとき、Router.replaceを実行せずにtrueを返す'}
     `('$description', async ({ path }) => {
       mockedUseRouter.mockReturnValue({ asPath: path } as any)
-      mockedRouter.replace.mockResolvedValue(true)
+      mockedReplace.mockResolvedValue(true)
 
       await act(async () => {
         result = renderHook(() => useCSR()).result
       })
 
-      expect(mockedRouter.replace).toHaveBeenCalledTimes(0)
+      expect(mockedReplace).toHaveBeenCalledTimes(0)
       expect(result?.current).toBe(true)
     })
   })
@@ -42,14 +41,14 @@ describe('useCSR', () => {
       '$path が $href のパターンに合致するとき、Router.replaceを実行し、falseを返す',
       async ({ path, href }) => {
         mockedUseRouter.mockReturnValue({ asPath: path } as any)
-        mockedRouter.replace.mockResolvedValue(true)
+        mockedReplace.mockResolvedValue(true)
 
         await act(async () => {
           result = renderHook(() => useCSR()).result
         })
 
-        expect(mockedRouter.replace).toHaveBeenCalledTimes(1)
-        expect(mockedRouter.replace).toHaveBeenCalledWith(href, path)
+        expect(mockedReplace).toHaveBeenCalledTimes(1)
+        expect(mockedReplace).toHaveBeenCalledWith(href, path)
         expect(result?.current).toBe(false)
       }
     )
