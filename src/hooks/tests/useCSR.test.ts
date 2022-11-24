@@ -1,10 +1,9 @@
 import { renderHook, act, RenderResult } from '@testing-library/react-hooks'
-
+import mockRouter from 'next-router-mock'
 import { useCSR } from '../useCSR'
 
 jest.mock('next/router', () => require('next-router-mock'))
 
-import mockRouter from 'next-router-mock'
 const mockedUseRouter = jest.spyOn(require('next/router'), 'useRouter')
 const mockedReplace = jest.spyOn(mockRouter, 'replace')
 
