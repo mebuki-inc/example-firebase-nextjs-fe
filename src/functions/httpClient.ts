@@ -4,7 +4,7 @@ import { getConfig } from './config'
 
 type MutateMethod = 'post' | 'put' | 'patch' | 'delete'
 
-type Success<T> = {
+export type Success<T> = {
   status: number
   body: T
   headers: AxiosResponseHeaders
@@ -13,6 +13,7 @@ type Success<T> = {
 
 type Error = {
   status: number
+  body?: any
   headers?: AxiosResponseHeaders
   error: true
 }
