@@ -13,7 +13,7 @@
     "test:w": "jest --watch",
     "test:c": "jest --coverage",
     "test:s": "jest --config ./jest.storyshots.config.js",
-    "storybook": "start-storybook -s ./public -p 6006",
+    "storybook": "NODE_ENV=test start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -o docs-build"
   },
   "dependencies": {
