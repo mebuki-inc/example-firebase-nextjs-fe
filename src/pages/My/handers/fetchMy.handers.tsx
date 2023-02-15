@@ -2,7 +2,6 @@ import { rest } from 'msw'
 import { getConfig } from '../../../functions/config'
 
 const { apiHost } = getConfig()
-// const apiHost = 'http://localhost'
 
 export const handlers = {
   default: rest.get(`${apiHost}/v1/user/self`, (req, res, ctx) => {

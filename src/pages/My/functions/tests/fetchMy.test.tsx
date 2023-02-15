@@ -22,7 +22,7 @@ describe('fetchClientsSearch', () => {
   describe('正常系', () => {
     test.each`
       status | response            | expected            | description
-      ${200} | ${stubResponseBody} | ${stubResponseBody} | ${'正常にレスポンスが返却される場合、会計事務所の情報が正常に返却される'}
+      ${200} | ${stubResponseBody} | ${stubResponseBody} | ${'正常にレスポンスが返却される場合、会員情報が正常に返却される'}
     `('$description', async ({ status, response, expected }) => {
       const handler = rest.get(apiHost + path, (req, res, ctx) => {
         return res(ctx.status(status), ctx.json(response))

@@ -11,3 +11,15 @@ Array [
   </h3>,
 ]
 `;
+
+exports[`Storyshots pages/My Error 1`] = `
+Array [
+  <h1>
+    マイページ
+  </h1>,
+  <h3>
+    ようこそ、
+    さん
+  </h3>,
+]
+`;

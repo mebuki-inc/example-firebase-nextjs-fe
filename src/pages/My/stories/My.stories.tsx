@@ -16,3 +16,10 @@ Default.parameters = {
     handlers: [handlers.default]
   }
 }
+
+export const Error = Template.bind({})
+Error.parameters = {
+  msw: {
+    handlers: [handlers.error]
+  }
+}
