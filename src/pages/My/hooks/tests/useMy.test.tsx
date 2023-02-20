@@ -51,6 +51,8 @@ describe('useClientDetail', () => {
   }
 
   test('初期値', async () => {
+    mockServer.resetHandlers(handlers.default)
+
     await act(async () => {
       container = await renderHook(() => useMy(), { wrapper })
       result = container.result
