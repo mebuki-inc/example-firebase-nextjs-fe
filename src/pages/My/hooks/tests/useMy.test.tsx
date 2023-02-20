@@ -1,12 +1,11 @@
 import { SWRConfig } from 'swr'
-import { RecoilRoot, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { act, renderHook, RenderResult } from '@testing-library/react-hooks'
 import { RenderHookResult } from '@testing-library/react-hooks/src/types'
-import { mocked } from 'jest-mock'
 import * as recoil from 'recoil'
+import { setupServer } from 'msw/node'
 
 import { useMy } from '../useMy'
-import { setupServer } from 'msw/node'
 import { handlers } from '../../handers/fetchMy.handers'
 import { samples } from '../../fixtures/samples'
 
@@ -14,25 +13,23 @@ type Result = RenderResult<ReturnType<typeof useMy>>
 
 const mockServer = setupServer()
 
-jest.mock('recoil')
-const mockedUseRecoilValue = mocked(useRecoilValue)
-
 describe('useClientDetail', () => {
-  mockedUseRecoilValue.mockReturnValue({ token: 'test-token' })
-
+  beforeAll(() => mockServer.listen())
+  afterAll(() => mockServer.close())
   beforeEach(() => {
-    mockServer.listen()
-  })
-  afterAll(() => {
-    mockServer.close()
+    jest.clearAllMocks()
+    jest.spyOn(recoil, 'useRecoilValue').mockImplementation(() => {
+      return {
+        token: 'dummy-token'
+      }
+    })
   })
 
   const wrapper = ({ children }: any) => {
     return (
-      <SWRConfig value={{ provider: () => new Map() }}>
-        {children}
-        <RecoilRoot>{children}</RecoilRoot>
-      </SWRConfig>
+      <recoil.RecoilRoot>
+        <SWRConfig value={{ provider: () => new Map() }}>{children}</SWRConfig>
+      </recoil.RecoilRoot>
     )
   }
 
@@ -55,35 +52,36 @@ describe('useClientDetail', () => {
     my: undefined
   }
 
-  test('初期値', async () => {
-    mockServer.resetHandlers(handlers.default)
+  describe('正常系', () => {
+    test('初期値', async () => {
+      mockServer.resetHandlers(handlers.default)
 
-    await act(async () => {
-      container = await renderHook(() => useMy(), { wrapper })
-      result = container.result
-      expect(result?.current).toEqual(initialExpected)
+      await act(async () => {
+        container = await renderHook(() => useMy(), { wrapper })
+        result = container.result
+        expect(result?.current).toEqual(initialExpected)
+      })
+    })
+    test('情報の取得に成功した場合、値が返却される', async () => {
+      mockServer.resetHandlers(handlers.default)
+
+      await act(async () => {
+        container = await renderHook(() => useMy(), { wrapper })
+        result = container.result
+      })
+      expect(result?.current).toEqual(successExpected)
     })
   })
 
-  test('情報の取得に成功した場合、値が返却される', async () => {
-    mockServer.resetHandlers(handlers.default)
+  describe('異常系', () => {
+    test('情報の取得に失敗した場合、値が返却される', async () => {
+      mockServer.resetHandlers(handlers.error)
 
-    await act(async () => {
-      container = await renderHook(() => useMy(), { wrapper })
-      result = container.result
+      await act(async () => {
+        container = await renderHook(() => useMy(), { wrapper })
+        result = container.result
+      })
+      expect(result?.current).toEqual(failedExpected)
     })
-
-    expect(result?.current).toEqual(successExpected)
-  })
-
-  test('情報の取得に失敗した場合、値が返却される', async () => {
-    mockServer.resetHandlers(handlers.error)
-
-    await act(async () => {
-      container = await renderHook(() => useMy(), { wrapper })
-      result = container.result
-    })
-
-    expect(result?.current).toEqual(failedExpected)
   })
 })

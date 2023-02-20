@@ -30,7 +30,7 @@ describe('fetchClientsSearch', () => {
       })
       mockServer.resetHandlers(handler)
 
-      const actual = await fetchMy(path, 'stub-token')
+      const actual = await fetchMy([path, 'stub-token'])
       expect(actual).toEqual(expected)
     })
   })
@@ -47,7 +47,7 @@ describe('fetchClientsSearch', () => {
       })
       mockServer.resetHandlers(handler)
 
-      await expect(fetchMy(path, 'stub-token')).rejects.toThrow(expected)
+      await expect(fetchMy([path, 'stub-token'])).rejects.toThrow(expected)
     })
   })
 })

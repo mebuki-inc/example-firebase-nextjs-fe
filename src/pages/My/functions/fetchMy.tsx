@@ -5,7 +5,7 @@ type Response = {
   name: string
 }
 
-export const fetchMy = async (path: string, token: string): Promise<Response> => {
+export const fetchMy = async ([path, token]: string[]): Promise<Response> => {
   const headers = {
     Authorization: `Bearer ${token}`
   }
