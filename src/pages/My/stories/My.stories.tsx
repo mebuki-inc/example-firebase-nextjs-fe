@@ -1,8 +1,9 @@
 import { My } from '../'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { RecoilRoot } from 'recoil'
-
+import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { handlers } from '../handers/fetchMy.handers'
+import { SWRConfig } from 'swr'
+import { authAtom } from '../../../state/atoms'
 
 export default {
   title: 'pages/My',
@@ -10,7 +11,17 @@ export default {
   argTypes: {},
   decorators: [
     story => {
-      return <RecoilRoot>{story()}</RecoilRoot>
+      return (
+        <SWRConfig value={{ provider: () => new Map() }}>
+          <RecoilRoot
+            initializeState={({ set }: MutableSnapshot): void =>
+              set(authAtom, { token: 'test-token' })
+            }
+          >
+            {story()}
+          </RecoilRoot>
+        </SWRConfig>
+      )
     }
   ]
 } as ComponentMeta<typeof My>
