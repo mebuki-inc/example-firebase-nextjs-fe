@@ -1,5 +1,5 @@
 import { SWRConfig } from 'swr'
-import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
+import { RecoilRoot, useRecoilValue } from 'recoil'
 import { act, renderHook, RenderResult } from '@testing-library/react-hooks'
 import { RenderHookResult } from '@testing-library/react-hooks/src/types'
 import { mocked } from 'jest-mock'
@@ -49,6 +49,11 @@ describe('useClientDetail', () => {
     isLoading: false,
     my: samples['200']
   }
+  const failedExpected = {
+    isError: true,
+    isLoading: false,
+    my: undefined
+  }
 
   test('初期値', async () => {
     mockServer.resetHandlers(handlers.default)
@@ -60,7 +65,7 @@ describe('useClientDetail', () => {
     })
   })
 
-  test('情報の取得に成功した場合、取得した値が返却される', async () => {
+  test('情報の取得に成功した場合、値が返却される', async () => {
     mockServer.resetHandlers(handlers.default)
 
     await act(async () => {
@@ -69,5 +74,16 @@ describe('useClientDetail', () => {
     })
 
     expect(result?.current).toEqual(successExpected)
+  })
+
+  test('情報の取得に失敗した場合、値が返却される', async () => {
+    mockServer.resetHandlers(handlers.error)
+
+    await act(async () => {
+      container = await renderHook(() => useMy(), { wrapper })
+      result = container.result
+    })
+
+    expect(result?.current).toEqual(failedExpected)
   })
 })
