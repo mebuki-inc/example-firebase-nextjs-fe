@@ -1,6 +1,10 @@
 import { SWRConfig } from 'swr'
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
 import { act, renderHook, RenderResult } from '@testing-library/react-hooks'
 import { RenderHookResult } from '@testing-library/react-hooks/src/types'
+import { mocked } from 'jest-mock'
+import * as recoil from 'recoil'
+
 import { useMy } from '../useMy'
 import { setupServer } from 'msw/node'
 import { handlers } from '../../handers/fetchMy.handers'
@@ -10,7 +14,12 @@ type Result = RenderResult<ReturnType<typeof useMy>>
 
 const mockServer = setupServer()
 
+jest.mock('recoil')
+const mockedUseRecoilValue = mocked(useRecoilValue)
+
 describe('useClientDetail', () => {
+  mockedUseRecoilValue.mockReturnValue({ token: 'test-token' })
+
   beforeEach(() => {
     mockServer.listen()
   })
@@ -22,7 +31,7 @@ describe('useClientDetail', () => {
     return (
       <SWRConfig value={{ provider: () => new Map() }}>
         {children}
-        {/*<RecoilRoot>{children}</RecoilRoot>*/}
+        <RecoilRoot>{children}</RecoilRoot>
       </SWRConfig>
     )
   }

@@ -1,11 +1,18 @@
 import { My } from '../'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { RecoilRoot } from 'recoil'
+
 import { handlers } from '../handers/fetchMy.handers'
 
 export default {
   title: 'pages/My',
   component: My,
-  argTypes: {}
+  argTypes: {},
+  decorators: [
+    story => {
+      return <RecoilRoot>{story()}</RecoilRoot>
+    }
+  ]
 } as ComponentMeta<typeof My>
 
 const Template: ComponentStory<typeof My> = args => <My />

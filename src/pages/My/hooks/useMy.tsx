@@ -1,15 +1,14 @@
 import useSWR from 'swr'
+import { useRecoilValue } from 'recoil'
 
 import { fetchMy } from '../functions/fetchMy'
+import { authAtom, myAtom } from '../../../state/atoms'
 
 const PATH = '/v1/user/self'
 
 export const useMy = () => {
-  const token = 'test-token'
-
+  const { token } = useRecoilValue(authAtom)
   const { data, error } = useSWR([PATH, token], fetchMy)
-
-  // console.log('data', data)
 
   return {
     isLoading: !Boolean(data) && !Boolean(error),
@@ -17,32 +16,3 @@ export const useMy = () => {
     my: data
   }
 }
-
-// import { useState } from 'react'
-// export const useMy = () => {
-//   const [name, setName] = useState<string>('')
-//   const [isError, setIsError] = useState<Boolean>(false)
-//
-//   const fetch = async () => {
-//     const token = 'test-token'
-//     try {
-//       const data = await fetchMy(PATH, token)
-//       setName(data.name)
-//       setIsError(false)
-//     } catch (e) {
-//       setIsError(true)
-//     }
-//   }
-//
-//   console.log('name', name)
-//
-//   return {
-//     isError: isError || !Boolean(name),
-//     // fetch,
-//     isLoading: !Boolean(name),
-//     my: {
-//       id: 'fake-id',
-//       name: name
-//     }
-//   }
-// }
