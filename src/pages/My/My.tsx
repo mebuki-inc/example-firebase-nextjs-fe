@@ -1,14 +1,8 @@
 import type { FC } from 'react'
 import { useMy } from './hooks/useMy'
-import { useEffect } from 'react'
 
 export const My: FC = () => {
-  const { isError, name, fetch } = useMy()
-
-  useEffect(() => {
-    fetch().then()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const { isError, isLoading, my } = useMy()
 
   // エラーUI
   if (isError) {
@@ -20,10 +14,20 @@ export const My: FC = () => {
     )
   }
 
+  // ローディングUI
+  if (isLoading || !my) {
+    return (
+      <>
+        <h1>マイページ</h1>
+        {isLoading && <h3>読込中</h3>}
+      </>
+    )
+  }
+
   return (
     <>
       <h1>マイページ</h1>
-      <h3>ようこそ、{name}さん</h3>
+      <h3>ようこそ、{my.name}さん</h3>
     </>
   )
 }
