@@ -5,7 +5,8 @@ import { rest } from 'msw'
 
 const mockServer = setupServer()
 const stubResponseBody = {
-  userName: '田中太郎'
+  id: 'na7RlAiVAuP0tX0WGpvKBoCp0EMK',
+  name: '田中太郎'
 }
 const stubResponseBodyEmpty = undefined
 const apiHost = 'http://localhost'

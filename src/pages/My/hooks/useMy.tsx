@@ -11,7 +11,7 @@ export const useMy = () => {
     const token = 'test-token'
     try {
       const data = await fetchMy(PATH, token)
-      setName(data.userName)
+      setName(data.name)
       setIsError(false)
     } catch (e) {
       setIsError(true)

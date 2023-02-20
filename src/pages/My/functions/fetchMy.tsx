@@ -1,7 +1,8 @@
 import { fetch } from '../../../functions'
 
 type Response = {
-  userName: string
+  id: string
+  name: string
 }
 
 export const fetchMy = async (path: string, token: string): Promise<Response> => {
