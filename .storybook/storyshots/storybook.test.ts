@@ -17,11 +17,9 @@ initStoryshots({
       const jsx = story.render()
       const { unmount, rerender, container } = await render(jsx)
 
-      // wait for state changes
+      // データ取得後に再描画する
       await act(() => new Promise(resolve => setTimeout(resolve)))
-
       await rerender(jsx)
-      // expect(container).toMatchSnapshot()
 
       const snapshotFileName = converter.getSnapshotFileName(context)
       expect(container).toMatchSpecificSnapshot(snapshotFileName)
