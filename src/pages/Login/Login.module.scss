@@ -3,9 +3,9 @@
 }
 
 .button {
-color: deepskyblue;
+  color: deepskyblue;
 }
 .button:disabled {
-  color: darkgrey;
+  color: grey;
   pointer-events: none;
 }
