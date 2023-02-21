@@ -4,7 +4,10 @@ import { initialize, mswDecorator } from 'msw-storybook-addon'
 import '../src/styles/globals.scss'
 
 // Initialize MSW
-initialize()
+if (!global.test) {
+  // only run this in the browser
+  initialize()
+}
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
