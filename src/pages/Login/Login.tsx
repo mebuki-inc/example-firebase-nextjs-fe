@@ -6,8 +6,6 @@ import styles from './Login.module.scss'
 export const Login: FC = () => {
   const { form, isValid } = useSignIn()
 
-  console.log('isValid', isValid)
-
   return (
     <>
       <h1 className={styles.title}>ログイン画面</h1>
