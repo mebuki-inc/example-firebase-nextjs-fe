@@ -20,7 +20,10 @@ export const ROUTES: Routes = [
   { pattern: '^/$', href: '/', login: false },
 
   /** ログイン画面 */
-  { pattern: '^/login/?$', href: '/login', login: false }
+  { pattern: '^/login/?$', href: '/login', login: false },
+
+  /** プロフィール画面 */
+  { pattern: '^/my/?$', href: '/my', login: false }
 
   /**
    * ログインが必要なパス
