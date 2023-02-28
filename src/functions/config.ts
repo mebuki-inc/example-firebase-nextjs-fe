@@ -18,7 +18,7 @@ const DEFAULT_CONFIG: AppConfig = {
 const config = _getConfig()?.publicRuntimeConfig
 
 export const getConfig = (): AppConfig => {
-  if (process.env.NODE_ENV === 'test') {
+  if (['development', 'test'].includes(process.env.NODE_ENV)) {
     return {
       ...DEFAULT_CONFIG,
       apiHost: 'http://localhost'
