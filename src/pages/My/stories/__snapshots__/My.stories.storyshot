@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots pages/My Default 1`] = `
+Array [
+  <h1>
+    マイページ
+  </h1>,
+  <h3>
+    読み込みエラー
+  </h3>,
+]
+`;
+
+exports[`Storyshots pages/My Error 1`] = `
+Array [
+  <h1>
+    マイページ
+  </h1>,
+  <h3>
+    読み込みエラー
+  </h3>,
+]
+`;
