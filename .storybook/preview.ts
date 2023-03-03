@@ -1,7 +1,9 @@
 import type { Preview } from '@storybook/react'
 import { initialize, mswDecorator } from 'msw-storybook-addon'
 
+// Initialize MSW
 if (!global.test) {
+  // only run this in the browser
   initialize()
 }
 
