@@ -1,6 +1,8 @@
-import type { Preview } from '@storybook/react'
+import type { Preview, StoryFn } from '@storybook/react'
 import { initialize, mswDecorator } from 'msw-storybook-addon'
 import { withNextRouter } from '@gogaille/storybook-addon-next-router'
+
+import '../src/styles/globals.scss'
 
 // Initialize MSW
 if (!global.test) {
@@ -25,4 +27,12 @@ const preview: Preview = {
 
 export default preview
 
-export const decorators = [mswDecorator, withNextRouter]
+export const decorators = [
+  (StoryFn: StoryFn) => (
+    <>
+      <StoryFn />
+    </>
+  ),
+  mswDecorator,
+  withNextRouter
+]
