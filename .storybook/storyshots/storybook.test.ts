@@ -1,12 +1,10 @@
 import initStoryshots, { Stories2SnapsConverter } from '@storybook/addon-storyshots'
 import { act, render } from '@testing-library/react'
-import path from 'path'
 import { setupServer } from 'msw/node'
 
 const converter = new Stories2SnapsConverter()
 
 initStoryshots({
-  configPath: path.resolve(__dirname, './main.js'),
   asyncJest: true,
   test: async ({ story, context, done }) => {
     const endpoints = context.parameters.msw?.handlers ?? []
