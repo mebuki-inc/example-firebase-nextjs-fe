@@ -1,6 +1,6 @@
 import { My } from '../'
 import { Meta, StoryFn } from '@storybook/react'
-import { handlers } from '../handers/fetchMy.handers'
+import { handlers } from '../handers/fetchMy.handlers'
 
 export default {
   title: 'pages/My',
