@@ -14,6 +14,11 @@ export const Default = Template.bind({})
 Default.parameters = {
   msw: {
     handlers: [handlers.default]
+  },
+  nextRouter: {
+    query: {
+      userType: 'CONSUMER'
+    }
   }
 }
 
