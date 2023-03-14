@@ -1,8 +1,10 @@
 import type { FC } from 'react'
 import { useMy } from './hooks/useMy'
+import { useRouter } from 'next/router'
 
 export const My: FC = () => {
   const { isError, isLoading, my } = useMy()
+  const { userType } = useRouter().query
 
   // エラーUI
   if (isError) {
@@ -27,6 +29,7 @@ export const My: FC = () => {
   return (
     <>
       <h1>マイページ</h1>
+      <h2>{userType === 'CONSUMER' ? '会員情報' : '管理者情報'}</h2>
       <h3>ようこそ、{my.name}さん</h3>
     </>
   )
