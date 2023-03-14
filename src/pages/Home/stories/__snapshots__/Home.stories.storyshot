@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots pages/Home Default 1`] = `
-Array [
+<div>
   <h1
-    className="title"
+    class="title"
   >
     Home画面
-  </h1>,
+  </h1>
   <section>
     <h2>
       メニュー
@@ -15,14 +15,11 @@ Array [
       <li>
         <a
           href="/login"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
         >
           ログイン画面（/login）
         </a>
       </li>
     </ul>
-  </section>,
-]
+  </section>
+</div>
 `;
