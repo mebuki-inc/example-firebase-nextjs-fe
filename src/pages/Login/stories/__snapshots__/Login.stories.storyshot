@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots pages/Login Default 1`] = `
+exports[`Storyshots pages/Login/stories/Login Default 1`] = `
 <div>
   <h1
     class="title"

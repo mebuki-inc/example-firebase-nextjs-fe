@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots pages/My Default 1`] = `
+exports[`Storyshots pages/My/stories/My Default 1`] = `
 <div>
   <h1>
     マイページ
@@ -16,7 +16,7 @@ exports[`Storyshots pages/My Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots pages/My Error 1`] = `
+exports[`Storyshots pages/My/stories/My Error 1`] = `
 <div>
   <h1>
     マイページ
@@ -27,7 +27,7 @@ exports[`Storyshots pages/My Error 1`] = `
 </div>
 `;
 
-exports[`Storyshots pages/My Loading 1`] = `
+exports[`Storyshots pages/My/stories/My Loading 1`] = `
 <div>
   <h1>
     マイページ
