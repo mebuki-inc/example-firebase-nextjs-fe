@@ -1,8 +1,11 @@
 import nock from 'nock'
-import { fetchMy } from '../fetchMy'
 
-const stubResponseBody = {
-  id: 'na7RlAiVAuP0tX0WGpvKBoCp0EMK',
+import { fetchMy } from '../fetchMy'
+import { samples } from '../../fixtures/samples'
+
+const stubResponseBody = samples['200']
+const stubResponseBodyInvalid = {
+  id: 'toooooooooooooooooooooooooooooooooooLong',
   name: '田中太郎'
 }
 const stubResponseBodyEmpty = undefined
@@ -31,10 +34,11 @@ describe('fetchClientsSearch', () => {
 
   describe('異常系', () => {
     test.each`
-      status | response                 | expected                       | description
-      ${400} | ${stubResponseBody}      | ${path + ': fetch error'}      | ${'BadRequestが返却された場合、fetch errorをthrowする'}
-      ${500} | ${stubResponseBody}      | ${path + ': fetch error'}      | ${'InternalServerErrorが返却された場合、fetch errorをthrowする'}
-      ${200} | ${stubResponseBodyEmpty} | ${path + ': invalid response'} | ${'空のbodyが返却された場合、invalid responseをthrowする'}
+      status | response                   | expected                       | description
+      ${400} | ${stubResponseBody}        | ${path + ': fetch error'}      | ${'BadRequestが返却された場合、fetch errorをthrowする'}
+      ${500} | ${stubResponseBody}        | ${path + ': fetch error'}      | ${'InternalServerErrorが返却された場合、fetch errorをthrowする'}
+      ${200} | ${stubResponseBodyInvalid} | ${path + ': invalid response'} | ${'不正のbodyが返却された場合、invalid responseをthrowする'}
+      ${200} | ${stubResponseBodyEmpty}   | ${path + ': invalid response'} | ${'空のbodyが返却された場合、invalid responseをthrowする'}
     `('$description', async ({ status, response, expected }) => {
       nock(apiHost)
         .get(path)

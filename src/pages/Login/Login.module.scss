@@ -1,0 +1,11 @@
+.title {
+  color: blue;
+}
+
+.button {
+  color: deepskyblue;
+}
+.button:disabled {
+  color: grey;
+  pointer-events: none;
+}
