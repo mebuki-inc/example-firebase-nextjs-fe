@@ -24,7 +24,7 @@ describe('fetchClientsSearch', () => {
         .matchHeader('Authorization', 'Bearer stub-token')
         .reply(status, response)
 
-      const actual = await fetchMy(path, 'stub-token')
+      const actual = await fetchMy([path, 'stub-token'])
       expect(actual).toEqual(expected)
     })
   })
@@ -41,7 +41,7 @@ describe('fetchClientsSearch', () => {
         .matchHeader('Authorization', 'Bearer stub-token')
         .reply(status, response)
 
-      await expect(fetchMy(path, 'stub-token')).rejects.toThrow(expected)
+      await expect(fetchMy([path, 'stub-token'])).rejects.toThrow(expected)
     })
   })
 })

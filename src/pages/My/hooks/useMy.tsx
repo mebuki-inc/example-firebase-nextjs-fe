@@ -1,26 +1,18 @@
-import { useState } from 'react'
+import useSWR from 'swr'
+import { useRecoilValue } from 'recoil'
+
 import { fetchMy } from '../functions/fetchMy'
+import { authAtom } from '../../../state/atoms'
 
 const PATH = '/v1/user/self'
 
 export const useMy = () => {
-  const [name, setName] = useState<string>('')
-  const [isError, setIsError] = useState<Boolean>(false)
-
-  const fetch = async () => {
-    const token = 'test-token'
-    try {
-      const data = await fetchMy(PATH, token)
-      setName(data.name)
-      setIsError(false)
-    } catch (e) {
-      setIsError(true)
-    }
-  }
+  const { token } = useRecoilValue(authAtom)
+  const { data, error, isLoading } = useSWR([PATH, token], fetchMy)
 
   return {
-    isError: isError || !Boolean(name),
-    fetch,
-    name
+    isLoading,
+    isError: Boolean(error),
+    my: data
   }
 }

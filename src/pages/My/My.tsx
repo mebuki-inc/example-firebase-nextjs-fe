@@ -1,16 +1,10 @@
 import type { FC } from 'react'
 import { useMy } from './hooks/useMy'
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export const My: FC = () => {
-  const { isError, name, fetch } = useMy()
+  const { isError, isLoading, my } = useMy()
   const { userType } = useRouter().query
-
-  useEffect(() => {
-    fetch().then()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   // エラーUI
   if (isError) {
@@ -22,11 +16,21 @@ export const My: FC = () => {
     )
   }
 
+  // ローディングUI
+  if (isLoading || !my) {
+    return (
+      <>
+        <h1>マイページ</h1>
+        {isLoading && <h3>読込中</h3>}
+      </>
+    )
+  }
+
   return (
     <>
       <h1>マイページ</h1>
       <h2>{userType === 'CONSUMER' ? '会員情報' : '管理者情報'}</h2>
-      <h3>ようこそ、{name}さん</h3>
+      <h3>ようこそ、{my.name}さん</h3>
     </>
   )
 }
