@@ -8,6 +8,9 @@ export const handlers = {
   default: rest.get(`${apiHost}/v1/user/self`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(samples['200']))
   }),
+  loading: rest.get(`${apiHost}/v1/user/self`, (req, res, ctx) => {
+    return res(ctx.delay(200), ctx.json(samples['200']))
+  }),
   error: rest.get(`${apiHost}/v1/user/self`, (req, res, ctx) => {
     return res(ctx.status(500), ctx.json({ errorMessage: 'internal server error' }))
   })

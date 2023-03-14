@@ -40,6 +40,13 @@ Default.parameters = {
   }
 }
 
+export const Loading = Template.bind({})
+Loading.parameters = {
+  msw: {
+    handlers: [handlers.loading]
+  }
+}
+
 export const Error = Template.bind({})
 Error.parameters = {
   msw: {
