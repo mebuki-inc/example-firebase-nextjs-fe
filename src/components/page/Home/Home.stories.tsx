@@ -1,8 +1,8 @@
-import { Home } from '../'
+import { Home } from './index'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
-  title: 'pages/Home',
+  title: 'page/Home',
   component: Home,
   argTypes: {}
 } as ComponentMeta<typeof Home>

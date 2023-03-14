@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { fetch } from '../../../functions'
+import { fetch } from '../../../../functions'
 
 const schema = z.object({
   id: z.string().uuid(),

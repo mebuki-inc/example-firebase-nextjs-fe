@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { useSignIn } from './hooks/useSignIn'
-import styles from './Login.module.scss'
+import styles from './login.module.scss'
 
 export const Login: FC = () => {
   const { form, isValid } = useSignIn()

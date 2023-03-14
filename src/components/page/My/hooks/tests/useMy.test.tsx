@@ -6,8 +6,8 @@ import * as recoil from 'recoil'
 import { setupServer } from 'msw/node'
 
 import { useMy } from '../useMy'
-import { handlers } from '../../handers/fetchMy.handers'
-import { samples } from '../../fixtures/samples'
+import { handlers } from '../../fixtures/fetchMy.handers'
+import { fetchMySamples } from '../../fixtures/fetchMy.samples'
 
 type Result = RenderResult<ReturnType<typeof useMy>>
 
@@ -44,7 +44,7 @@ describe('useClientDetail', () => {
   const successExpected = {
     isError: false,
     isLoading: false,
-    my: samples['200']
+    my: fetchMySamples['200']
   }
   const failedExpected = {
     isError: true,

@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import Link from 'next/link'
 
-import styles from './Home.module.scss'
+import styles from './home.module.scss'
 
 export const Home: FC = () => {
   return (

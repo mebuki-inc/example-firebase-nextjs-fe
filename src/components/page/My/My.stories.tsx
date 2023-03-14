@@ -1,12 +1,12 @@
-import { My } from '../'
+import { My } from './My'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
-import { handlers } from '../handers/fetchMy.handers'
+import { handlers } from './fixtures/fetchMy.handers'
 import { SWRConfig } from 'swr'
 import { authAtom } from '../../../state/atoms'
 
 export default {
-  title: 'pages/My',
+  title: 'page/My',
   component: My,
   argTypes: {},
   decorators: [

@@ -2,10 +2,10 @@ import { setupServer } from 'msw/node'
 import { rest } from 'msw'
 
 import { fetchMy } from '../fetchMy'
-import { samples } from '../../fixtures/samples'
+import { fetchMySamples } from '../../fixtures/fetchMy.samples'
 
 const mockServer = setupServer()
-const stubResponseBody = samples['200']
+const stubResponseBody = fetchMySamples['200']
 const stubResponseBodyInvalid = {
   id: 'toooooooooooooooooooooooooooooooooooLong',
   name: '田中太郎'

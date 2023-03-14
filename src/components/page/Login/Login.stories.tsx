@@ -1,8 +1,8 @@
-import { Login } from '../'
+import { Login } from './index'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
-  title: 'pages/Login',
+  title: 'page/Login',
   component: Login,
   argTypes: {}
 } as ComponentMeta<typeof Login>
