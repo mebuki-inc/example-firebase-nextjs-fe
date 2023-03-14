@@ -1,7 +1,7 @@
 import { My } from '../'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
+import { handlers } from '../handers/fetchMy.handlers'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
-import { handlers } from '../handers/fetchMy.handers'
 import { SWRConfig } from 'swr'
 import { authAtom } from '../../../state/atoms'
 
@@ -10,7 +10,7 @@ export default {
   component: My,
   argTypes: {},
   decorators: [
-    story => {
+    StoryFn => {
       return (
         <SWRConfig value={{ provider: () => new Map() }}>
           <RecoilRoot
@@ -18,20 +18,25 @@ export default {
               set(authAtom, { token: 'test-token' })
             }
           >
-            {story()}
+            {StoryFn()}
           </RecoilRoot>
         </SWRConfig>
       )
     }
   ]
-} as ComponentMeta<typeof My>
+} as Meta<typeof My>
 
-const Template: ComponentStory<typeof My> = args => <My />
+const Template: StoryFn<typeof My> = args => <My />
 
 export const Default = Template.bind({})
 Default.parameters = {
   msw: {
     handlers: [handlers.default]
+  },
+  nextRouter: {
+    query: {
+      userType: 'CONSUMER'
+    }
   }
 }
 
