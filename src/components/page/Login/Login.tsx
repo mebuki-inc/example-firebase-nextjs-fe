@@ -2,13 +2,14 @@ import type { FC } from 'react'
 
 import { useSignIn } from './hooks/useSignIn'
 import styles from './login.module.scss'
+import { Title } from '../../ui/Title'
 
 export const Login: FC = () => {
   const { form, isValid } = useSignIn()
 
   return (
     <>
-      <h1 className={styles.title}>ログイン画面</h1>
+      <Title titleText="ログイン画面" />
       <p>メールアドレス</p>
       <input {...form.register('mailAddress')} />
       {form.formState.errors.mailAddress?.message}
