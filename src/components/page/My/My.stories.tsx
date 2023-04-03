@@ -1,16 +1,14 @@
-import { My } from './My'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { MutableSnapshot, RecoilRoot } from 'recoil'
+import { My } from './'
+import { Meta, StoryObj } from '@storybook/react'
 import { handlers } from './fixtures/fetchMy.handers'
+import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { SWRConfig } from 'swr'
 import { authAtom } from '../../../state/atoms'
 
 export default {
-  title: 'page/My',
   component: My,
-  argTypes: {},
   decorators: [
-    story => {
+    StoryFn => {
       return (
         <SWRConfig value={{ provider: () => new Map() }}>
           <RecoilRoot
@@ -18,26 +16,39 @@ export default {
               set(authAtom, { token: 'test-token' })
             }
           >
-            {story()}
+            {StoryFn()}
           </RecoilRoot>
         </SWRConfig>
       )
     }
   ]
-} as ComponentMeta<typeof My>
+} as Meta<typeof My>
 
-const Template: ComponentStory<typeof My> = args => <My />
-
-export const Default = Template.bind({})
-Default.parameters = {
-  msw: {
-    handlers: [handlers.default]
+export const Default: StoryObj<typeof My> = {
+  parameters: {
+    msw: {
+      handlers: [handlers.default]
+    },
+    nextRouter: {
+      query: {
+        userType: 'CONSUMER'
+      }
+    }
   }
 }
 
-export const Error = Template.bind({})
-Error.parameters = {
-  msw: {
-    handlers: [handlers.error]
+export const Loading: StoryObj<typeof My> = {
+  parameters: {
+    msw: {
+      handlers: [handlers.loading]
+    }
+  }
+}
+
+export const Error: StoryObj<typeof My> = {
+  parameters: {
+    msw: {
+      handlers: [handlers.error]
+    }
   }
 }

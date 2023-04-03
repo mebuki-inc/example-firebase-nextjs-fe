@@ -1,12 +1,6 @@
-import { Login } from './index'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Login } from './Login'
+import { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'page/Login',
-  component: Login,
-  argTypes: {}
-} as ComponentMeta<typeof Login>
+export default { component: Login } as Meta<typeof Login>
 
-const Template: ComponentStory<typeof Login> = args => <Login />
-
-export const Default = Template.bind({})
+export const Default: StoryObj<typeof Login> = {}

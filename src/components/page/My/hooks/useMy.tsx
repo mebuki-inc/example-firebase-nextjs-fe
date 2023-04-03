@@ -11,7 +11,7 @@ export const useMy = () => {
   const { data, error, isLoading } = useSWR([PATH, token], fetchMy)
 
   return {
-    isLoading: Boolean(isLoading),
+    isLoading,
     isError: Boolean(error),
     my: data
   }
