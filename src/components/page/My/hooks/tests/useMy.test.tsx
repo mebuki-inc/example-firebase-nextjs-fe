@@ -6,7 +6,7 @@ import * as recoil from 'recoil'
 import { setupServer } from 'msw/node'
 
 import { useMy } from '../useMy'
-import { handlers } from '../../fixtures/fetchMy.handers'
+import { handlers } from '../../fixtures/fetchMy.handlers'
 import { fetchMySamples } from '../../fixtures/fetchMy.samples'
 
 type Result = RenderResult<ReturnType<typeof useMy>>
