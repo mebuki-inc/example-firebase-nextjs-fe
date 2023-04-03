@@ -1,12 +1,12 @@
-import { My } from './'
+import { MyName } from './'
 import { Meta, StoryObj } from '@storybook/react'
-import { fetchMyHandlers } from '../../model/MyName/fixtures/fetchMyHandlers'
+import { fetchMyHandlers } from './fixtures/fetchMyHandlers'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { SWRConfig } from 'swr'
 import { authAtom } from '../../../state/atoms'
 
 export default {
-  component: My,
+  component: MyName,
   decorators: [
     StoryFn => {
       return (
@@ -22,22 +22,17 @@ export default {
       )
     }
   ]
-} as Meta<typeof My>
+} as Meta<typeof MyName>
 
-export const Default: StoryObj<typeof My> = {
+export const Default: StoryObj<typeof MyName> = {
   parameters: {
     msw: {
       handlers: [fetchMyHandlers.default]
-    },
-    nextRouter: {
-      query: {
-        userType: 'CONSUMER'
-      }
     }
   }
 }
 
-export const Loading: StoryObj<typeof My> = {
+export const Loading: StoryObj<typeof MyName> = {
   parameters: {
     msw: {
       handlers: [fetchMyHandlers.loading]
@@ -45,7 +40,7 @@ export const Loading: StoryObj<typeof My> = {
   }
 }
 
-export const Error: StoryObj<typeof My> = {
+export const Error: StoryObj<typeof MyName> = {
   parameters: {
     msw: {
       handlers: [fetchMyHandlers.error]

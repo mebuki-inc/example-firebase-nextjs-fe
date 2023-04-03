@@ -6,14 +6,14 @@ import * as recoil from 'recoil'
 import { setupServer } from 'msw/node'
 
 import { useMy } from '../useMy'
-import { handlers } from '../../fixtures/fetchMy.handlers'
+import { fetchMyHandlers } from '../../fixtures/fetchMyHandlers'
 import { fetchMySamples } from '../../fixtures/fetchMy.samples'
 
 type Result = RenderResult<ReturnType<typeof useMy>>
 
 const mockServer = setupServer()
 
-describe('useClientDetail', () => {
+describe('useMy', () => {
   beforeAll(() => mockServer.listen())
   afterAll(() => mockServer.close())
   beforeEach(() => {
@@ -54,7 +54,7 @@ describe('useClientDetail', () => {
 
   describe('正常系', () => {
     test('初期値', async () => {
-      mockServer.resetHandlers(handlers.default)
+      mockServer.resetHandlers(fetchMyHandlers.default)
 
       await act(async () => {
         container = await renderHook(() => useMy(), { wrapper })
@@ -63,7 +63,7 @@ describe('useClientDetail', () => {
       })
     })
     test('情報の取得に成功した場合、値が返却される', async () => {
-      mockServer.resetHandlers(handlers.default)
+      mockServer.resetHandlers(fetchMyHandlers.default)
 
       await act(async () => {
         container = await renderHook(() => useMy(), { wrapper })
@@ -75,7 +75,7 @@ describe('useClientDetail', () => {
 
   describe('異常系', () => {
     test('情報の取得に失敗した場合、値が返却される', async () => {
-      mockServer.resetHandlers(handlers.error)
+      mockServer.resetHandlers(fetchMyHandlers.error)
 
       await act(async () => {
         container = await renderHook(() => useMy(), { wrapper })

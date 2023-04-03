@@ -13,12 +13,18 @@ exports[`Storyshots components/page/Login Default 1`] = `
   <input
     name="mailAddress"
   />
+  <p
+    class="text"
+  />
   <p>
     パスワード
   </p>
   <input
     name="password"
     type="password"
+  />
+  <p
+    class="text"
   />
   <p>
     <button

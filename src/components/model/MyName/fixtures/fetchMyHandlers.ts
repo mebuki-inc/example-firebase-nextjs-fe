@@ -4,7 +4,7 @@ import { fetchMySamples } from './fetchMy.samples'
 
 const { apiHost } = getConfig()
 
-export const handlers = {
+export const fetchMyHandlers = {
   default: rest.get(`${apiHost}/v1/user/self`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(fetchMySamples['200']))
   }),

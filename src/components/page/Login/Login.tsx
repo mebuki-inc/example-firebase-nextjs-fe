@@ -1,8 +1,9 @@
 import type { FC } from 'react'
 
 import { useSignIn } from './hooks/useSignIn'
-import styles from './login.module.scss'
+import { Warning } from './parts/Warning'
 import { Title } from '../../ui/Title'
+import styles from './login.module.scss'
 
 export const Login: FC = () => {
   const { form, isValid } = useSignIn()
@@ -12,11 +13,11 @@ export const Login: FC = () => {
       <Title titleText="ログイン画面" />
       <p>メールアドレス</p>
       <input {...form.register('mailAddress')} />
-      {form.formState.errors.mailAddress?.message}
+      <Warning text={form.formState.errors.mailAddress?.message ?? ''} />
 
       <p>パスワード</p>
       <input type="password" {...form.register('password')} />
-      {form.formState.errors.password?.message}
+      <Warning text={form.formState.errors.password?.message ?? ''} />
 
       <p>
         <button

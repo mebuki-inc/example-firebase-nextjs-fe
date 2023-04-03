@@ -2,7 +2,9 @@
 
 exports[`Storyshots components/page/My Default 1`] = `
 <div>
-  <h1>
+  <h1
+    class="title"
+  >
     マイページ
   </h1>
   <h2>
@@ -18,9 +20,12 @@ exports[`Storyshots components/page/My Default 1`] = `
 
 exports[`Storyshots components/page/My Error 1`] = `
 <div>
-  <h1>
+  <h1
+    class="title"
+  >
     マイページ
   </h1>
+  <h2 />
   <h3>
     読み込みエラー
   </h3>
@@ -29,9 +34,12 @@ exports[`Storyshots components/page/My Error 1`] = `
 
 exports[`Storyshots components/page/My Loading 1`] = `
 <div>
-  <h1>
+  <h1
+    class="title"
+  >
     マイページ
   </h1>
+  <h2 />
   <h3>
     読込中
   </h3>
