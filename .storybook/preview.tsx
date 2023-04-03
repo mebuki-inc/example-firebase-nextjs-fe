@@ -7,7 +7,7 @@ import '../src/styles/globals.scss'
 // Initialize MSW
 if (!global.test) {
   // only run this in the browser
-  initialize()
+  initialize({ onUnhandledRequest: 'bypass' })
 }
 
 const preview: Preview = {
