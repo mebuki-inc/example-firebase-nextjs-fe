@@ -11,9 +11,7 @@ exports[`Storyshots components/page/My Default 1`] = `
     会員情報
   </h2>
   <h3>
-    ようこそ、
-    テスト太郎
-    さん
+    }ようこそ、テスト太郎さん
   </h3>
 </div>
 `;

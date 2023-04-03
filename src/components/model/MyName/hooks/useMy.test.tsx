@@ -5,9 +5,9 @@ import { RenderHookResult } from '@testing-library/react-hooks/src/types'
 import * as recoil from 'recoil'
 import { setupServer } from 'msw/node'
 
-import { useMy } from '../useMy'
-import { fetchMyHandlers } from '../../fixtures/fetchMyHandlers'
-import { fetchMySamples } from '../../fixtures/fetchMy.samples'
+import { useMy } from './useMy'
+import { fetchMyHandlers } from '../fixtures/fetchMyHandlers'
+import { fetchMySamples } from '../fixtures/fetchMy.samples'
 
 type Result = RenderResult<ReturnType<typeof useMy>>
 

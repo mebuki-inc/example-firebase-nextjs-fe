@@ -9,7 +9,7 @@ jest.mock('next/router', () => require('next-router-mock'))
 
 const mockedUseRouter = jest.spyOn(require('next/router'), 'useRouter')
 
-describe('useClientDetail', () => {
+describe('useUserType', () => {
   beforeEach(() => {
     jest.clearAllMocks()
   })

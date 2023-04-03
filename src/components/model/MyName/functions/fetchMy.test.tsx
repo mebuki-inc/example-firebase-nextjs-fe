@@ -1,7 +1,7 @@
 import nock from 'nock'
 
-import { fetchMy } from '../fetchMy'
-import { fetchMySamples } from '../../fixtures/fetchMy.samples'
+import { fetchMy } from './fetchMy'
+import { fetchMySamples } from '../fixtures/fetchMy.samples'
 
 const stubResponseBody = fetchMySamples['200']
 const stubResponseBodyInvalid = {

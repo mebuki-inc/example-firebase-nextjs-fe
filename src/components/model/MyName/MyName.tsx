@@ -14,5 +14,5 @@ export const MyName: FC = () => {
     return <h3>読込中</h3>
   }
 
-  return <h3>ようこそ、{my.name}さん</h3>
+  return <h3>{`}ようこそ、${my.name}さん`}</h3>
 }

@@ -3,9 +3,7 @@
 exports[`Storyshots components/model/MyName Default 1`] = `
 <div>
   <h3>
-    ようこそ、
-    テスト太郎
-    さん
+    }ようこそ、テスト太郎さん
   </h3>
 </div>
 `;
