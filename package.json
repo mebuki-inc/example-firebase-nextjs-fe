@@ -13,7 +13,7 @@
     "test:w": "jest --watch",
     "test:c": "jest --coverage",
     "test:s": "jest --config ./jest.storyshots.config.js",
-    "storybook": "STORYBOOK_MSW=true storybook dev -p 6006",
+    "storybook": "STORYBOOK_API_HOST=local storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
