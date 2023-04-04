@@ -3,6 +3,9 @@
   "license": "MIT",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.15.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
@@ -44,7 +47,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.15.11",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "babel-jest": "^29.3.1",
