@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { useSignIn } from './hooks/useSignIn'
+import { useSignIn } from './hooks'
 import { Warning } from './parts/Warning'
 import { Title } from '../../ui/Title'
 import styles from './login.module.scss'
