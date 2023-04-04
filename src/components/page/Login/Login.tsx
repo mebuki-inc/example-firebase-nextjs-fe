@@ -2,7 +2,7 @@ import type { FC } from 'react'
 
 import { useSignIn } from './hooks/useSignIn'
 import { Warning } from './parts/Warning'
-import { Title } from '../../ui/Title'
+import { Title } from '@/src/components/ui/Title'
 import styles from './login.module.scss'
 
 export const Login: FC = () => {

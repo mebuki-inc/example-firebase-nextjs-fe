@@ -1,5 +1,5 @@
 import _getConfig from 'next/config'
-import { Config } from '../../config/type'
+import { Config } from '@/config/type'
 
 const _config = require('../../config/production')
 

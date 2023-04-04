@@ -17,7 +17,8 @@ module.exports = {
     '!src/**/index.ts'
   ],
   moduleNameMapper: {
-    '\\.(css|scss)$': 'identity-obj-proxy'
+    '\\.(css|scss)$': 'identity-obj-proxy',
+    '^@/(.*)$': '<rootDir>/$1'
   },
   transform: {
     '^.+\\.(js|ts|jsx|tsx)$': 'babel-jest'
