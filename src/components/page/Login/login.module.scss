@@ -1,0 +1,7 @@
+.button {
+  color: deepskyblue;
+}
+.button:disabled {
+  color: darkgrey;
+  pointer-events: none;
+}

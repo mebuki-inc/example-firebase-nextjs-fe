@@ -4,9 +4,12 @@ import dynamic from 'next/dynamic'
 
 import '../src/styles/globals.scss'
 
-const Dynamic = dynamic<AppProps>(() => import('../src/components/App').then(mod => mod.App), {
-  ssr: false
-})
+const Dynamic = dynamic<AppProps>(
+  () => import('../src/components/functional/App').then(mod => mod.App),
+  {
+    ssr: false
+  }
+)
 
 const MyApp: FC<AppProps> = props => <Dynamic {...props} />
 export default MyApp

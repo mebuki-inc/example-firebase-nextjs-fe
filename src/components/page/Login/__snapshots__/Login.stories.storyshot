@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots components/page/Login Default 1`] = `
+<div>
+  <h1
+    class="title"
+  >
+    ログイン画面
+  </h1>
+  <p>
+    メールアドレス
+  </p>
+  <input
+    name="mailAddress"
+  />
+  <p
+    class="text"
+  />
+  <p>
+    パスワード
+  </p>
+  <input
+    name="password"
+    type="password"
+  />
+  <p
+    class="text"
+  />
+  <p>
+    <button
+      class="button"
+      disabled=""
+      type="button"
+    >
+      ログイン
+    </button>
+  </p>
+</div>
+`;

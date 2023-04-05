@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots components/model/MyName Default 1`] = `
+<div>
+  <h3>
+    ようこそ、テスト太郎さん
+  </h3>
+</div>
+`;
+
+exports[`Storyshots components/model/MyName Error 1`] = `
+<div>
+  <h3>
+    読み込みエラー
+  </h3>
+</div>
+`;
+
+exports[`Storyshots components/model/MyName Loading 1`] = `
+<div>
+  <h3>
+    読込中
+  </h3>
+</div>
+`;

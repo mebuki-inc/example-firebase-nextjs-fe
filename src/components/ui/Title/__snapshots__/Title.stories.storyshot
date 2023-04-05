@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots components/ui/Title Default 1`] = `
+<div>
+  <h1
+    class="title"
+  >
+    サンプルタイトル
+  </h1>
+</div>
+`;
