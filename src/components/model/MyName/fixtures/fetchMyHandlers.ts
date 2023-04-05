@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import { getConfig } from '../../../../functions/config'
+import { getConfig } from '@/src/functions/config'
 import { fetchMySamples } from './fetchMy.samples'
 
 const { apiHost } = getConfig()

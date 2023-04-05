@@ -1,9 +1,9 @@
 import { My } from './'
 import { Meta, StoryObj } from '@storybook/react'
-import { fetchMyHandlers } from '../../model/MyName/fixtures/fetchMyHandlers'
+import { fetchMyHandlers } from '@/src/components/model/MyName/fixtures/fetchMyHandlers'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { SWRConfig } from 'swr'
-import { authAtom } from '../../../state/atoms'
+import { authAtom } from '@/src/state/atoms'
 
 export default {
   component: My,

@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { fetchMyHandlers } from './fixtures/fetchMyHandlers'
 import { MutableSnapshot, RecoilRoot } from 'recoil'
 import { SWRConfig } from 'swr'
-import { authAtom } from '../../../state/atoms'
+import { authAtom } from '@/src/state/atoms'
 
 export default {
   component: MyName,
